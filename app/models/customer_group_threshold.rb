@@ -1,0 +1,2 @@
+class CustomerGroupThreshold < ApplicationRecord
+end

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_144949) do
+ActiveRecord::Schema.define(version: 2020_04_03_151343) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "categoryName", null: false
@@ -71,6 +74,63 @@ ActiveRecord::Schema.define(version: 2020_04_03_144949) do
     t.decimal "unitPrice", null: false
     t.integer "quantity", null: false
     t.decimal "discount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "orderID", null: false
+    t.integer "employeeID"
+    t.datetime "orderDate"
+    t.datetime "requiredDate"
+    t.datetime "shippedDate"
+    t.integer "shipVia"
+    t.decimal "freight"
+    t.string "shipName"
+    t.string "shipAddress"
+    t.string "shipCity"
+    t.string "shipRegion"
+    t.string "shipPostalCode"
+    t.string "shipCountry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "productName", null: false
+    t.integer "supplierID"
+    t.integer "categoryID"
+    t.string "quantityPerUnit"
+    t.decimal "unitPrice"
+    t.integer "unitsInStock"
+    t.integer "unitsOnOrder"
+    t.integer "reorderLevel"
+    t.string "discontinued"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shippers", force: :cascade do |t|
+    t.integer "shipperID", null: false
+    t.string "companyName", null: false
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.integer "supplierID", null: false
+    t.string "companyName", null: false
+    t.string "contactName"
+    t.string "contactTitle"
+    t.string "address"
+    t.string "city"
+    t.string "region"
+    t.string "postalCode"
+    t.string "country"
+    t.string "phone"
+    t.string "fax"
+    t.text "homePage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

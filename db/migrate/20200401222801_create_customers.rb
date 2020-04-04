@@ -13,7 +13,7 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
       t.string :phone
       t.string :fax
   
-      t.timestamps
+   
     end
   end
 end

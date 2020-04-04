@@ -4,7 +4,7 @@ class CreateShippers < ActiveRecord::Migration[6.0]
       t.integer :shipperID, null: false
       t.string :companyName, null: false
       t.string :phone
-      t.timestamps
+    
     end
   end
 end

@@ -16,9 +16,9 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
       t.string :homePhone
       t.string :extension
       t.text :notes
-      t.integer :reportsTo
+      t.integer :reportsTo, foreign_key: true
       t.string :photoPath
-      t.timestamps
+     
     end
   end
 end

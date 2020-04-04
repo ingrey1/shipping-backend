@@ -4,7 +4,7 @@ class CreateCustomerGroupThresholds < ActiveRecord::Migration[6.0]
       t.string :customerGroupName
       t.decimal :rangeBottom
       t.decimal :rangeTop
-      t.timestamps
+    
     end
   end
 end

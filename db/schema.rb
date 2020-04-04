@@ -19,16 +19,12 @@ ActiveRecord::Schema.define(version: 2020_04_03_151343) do
     t.string "categoryName", null: false
     t.integer "categoryID", null: false
     t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customer_group_thresholds", force: :cascade do |t|
     t.string "customerGroupName"
     t.decimal "rangeBottom"
     t.decimal "rangeTop"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -43,8 +39,6 @@ ActiveRecord::Schema.define(version: 2020_04_03_151343) do
     t.string "country"
     t.string "phone"
     t.string "fax"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -65,21 +59,19 @@ ActiveRecord::Schema.define(version: 2020_04_03_151343) do
     t.text "notes"
     t.integer "reportsTo"
     t.string "photoPath"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "orderID", null: false
     t.integer "productID", null: false
     t.decimal "unitPrice", null: false
     t.integer "quantity", null: false
     t.decimal "discount", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "orderID", null: false
+    t.integer "customerID"
     t.integer "employeeID"
     t.datetime "orderDate"
     t.datetime "requiredDate"
@@ -92,30 +84,25 @@ ActiveRecord::Schema.define(version: 2020_04_03_151343) do
     t.string "shipRegion"
     t.string "shipPostalCode"
     t.string "shipCountry"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.string "productName", null: false
     t.integer "supplierID"
     t.integer "categoryID"
+    t.integer "productID"
     t.string "quantityPerUnit"
     t.decimal "unitPrice"
     t.integer "unitsInStock"
     t.integer "unitsOnOrder"
     t.integer "reorderLevel"
     t.string "discontinued"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shippers", force: :cascade do |t|
     t.integer "shipperID", null: false
     t.string "companyName", null: false
     t.string "phone"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -131,8 +118,6 @@ ActiveRecord::Schema.define(version: 2020_04_03_151343) do
     t.string "phone"
     t.string "fax"
     t.text "homePage"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

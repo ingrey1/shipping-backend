@@ -2,11 +2,12 @@ class CreateOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
       t.integer :orderID, null: false
-      t.integer :employeeID
+      t.integer :customerID, foreign_key: true
+      t.integer :employeeID, foreign_key: true
       t.datetime :orderDate
       t.datetime :requiredDate
       t.datetime :shippedDate
-      t.integer :shipVia
+      t.integer :shipVia, foreign_key: true # references shipperID
       t.decimal :freight
       t.string :shipName
       t.string :shipAddress
@@ -14,7 +15,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :shipRegion
       t.string :shipPostalCode
       t.string :shipCountry
-      t.timestamps
+      
     end
   end
 end

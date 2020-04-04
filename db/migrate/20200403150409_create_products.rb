@@ -2,8 +2,9 @@ class CreateProducts < ActiveRecord::Migration[6.0]
   def change
     create_table :products do |t|
       t.string :productName, null: false
-      t.integer :supplierID
-      t.integer :categoryID
+      t.integer :supplierID, foreign_key: true
+      t.integer :categoryID, foreign_key: true
+      t.integer :productID
       t.string :quantityPerUnit
       t.decimal :unitPrice
       t.integer :unitsInStock
@@ -12,7 +13,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :discontinued
 
 
-      t.timestamps
+     
     end
   end
 end

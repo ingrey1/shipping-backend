@@ -13,7 +13,7 @@ class CreateSuppliers < ActiveRecord::Migration[6.0]
       t.string :phone
       t.string :fax
       t.text :homePage
-      t.timestamps
+      
     end
   end
 end

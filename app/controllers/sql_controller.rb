@@ -2,12 +2,8 @@ class SqlController < ApplicationController
 
    def query
    
-      sql = <<-SQL
-         SELECT *
-         FROM shippers
-         LIMIT 5; 
-      SQL
-
+      sql = params[:query]
+    
       records_array = ActiveRecord::Base.connection.execute(sql)
       render json: records_array
 
